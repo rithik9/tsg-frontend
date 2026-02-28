@@ -1,42 +1,112 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
+/* Sidebar Base Styles */
+.sidebar {
+  height: 100vh;
+  background: #1a1a1a;
+  transition: width 0.3s ease; /* This makes the opening/closing smooth */
+  overflow-x: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Width when open vs collapsed */
+.sidebar.open {
+  width: 240px;
+}
+
+.sidebar.collapsed {
+  width: 70px;
+}
+
+/* The Toggle Button */
+.toggle-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.toggle-btn:hover {
+  background: #646cff;
+}
+
+/* Nav Link Styling */
+.sidebar ul {
+  list-style: none;
+  padding: 10px;
+  margin-top: 50px;
+}
+
+.sidebar li a {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px;
+  color: #ccc;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+.sidebar.collapsed li a {
+  justify-content: center; /* Center icons when collapsed */
+  padding: 12px 0;
+}
+
+.sidebar a.active {
+  background: #646cff;
+  color: white;
+}
+
+.app-container {
+  display: flex; /* This puts Sidebar and Main side-by-side */
+  width: 100vw;  /* Ensure it spans the full viewport width */
+  min-height: 100vh;
+}
+
+.main-content {
+  flex-grow: 1; /* This is the key! It forces the div to take all remaining space */
+  background-color: #242424; /* Or your preferred color */
   padding: 2rem;
-  text-align: center;
+  
+  /* Optional: Ensure content doesn't get squished */
+  min-width: 0; 
+  display: flex;
+  flex-direction: column;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Loading Spinner */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px;
+  color: #646cff;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-left-color: #646cff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+/* Page Layout */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
 }

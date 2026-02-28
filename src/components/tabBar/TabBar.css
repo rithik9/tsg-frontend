@@ -1,0 +1,65 @@
+.tab-bar-container {
+  display: flex;
+  /* Centers the entire tab group */
+  justify-content: center; 
+  border-bottom: 1px solid #333;
+  margin-bottom: 20px;
+  width: 100%; /* Ensures it spans the full width of the parent */
+}
+
+.tab-item {
+  /* This makes each tab take up an equal portion of the container */
+  flex: 1; 
+  /* Limits the max width so they don't look awkwardly wide on giant screens */
+  max-width: 200px; 
+  
+  background: none;
+  border: none;
+  padding: 12px 4px;
+  color: #888;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+  
+  /* Removes that focus outline we discussed */
+  outline: none;
+  user-select: none;
+}
+/* Removes the outline for mouse users */
+.tab-item:focus {
+  outline: none;
+}
+
+/* (Optional) Restores a clean outline ONLY for keyboard navigation */
+.tab-item:focus-visible {
+  outline: 2px solid #646cff;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+
+.tab-item:hover {
+  color: #ccc;
+}
+
+.tab-item.active {
+  color: #646cff;
+}
+
+/* The blue line under the active tab */
+.tab-indicator {
+  position: absolute;
+  bottom: -1px;
+  left: 10%; /* Makes the line slightly shorter than the tab width for style */
+  right: 10%;
+  height: 2px;
+  background-color: #646cff;
+  border-radius: 2px 2px 0 0;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: scaleX(0.5); }
+  to { opacity: 1; transform: scaleX(1); }
+}
